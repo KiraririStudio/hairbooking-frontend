@@ -163,6 +163,35 @@ button:hover {
   animation:spin 1s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+  
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+  
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+button:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  transition: 0.4s ease;
+}
 
 </style>
 </head>
@@ -213,7 +242,7 @@ button:hover {
   <div class="bank-info">
     <div class="bank-title">匯款資訊</div>
     <div class="bank-row">銀行：永豐銀行（807）</div>
-    <div class="bank-row">帳號：14101800063837</div>
+    <div class="bank-row">帳號：20001800284131</div>
     <div class="bank-note">※ 完成匯款後，請填寫上方匯款後5碼</div>
     <div class="bank-note">匯款完成請私訊 kirariri studio 確認</div>
     <div class="bank-note">IG：kirariri_studio</div>
@@ -352,9 +381,11 @@ function submit(){
   })
   .then(r=>r.json())
   .then(()=>{
-    showModal(`
-      <p>✅ 預約成功</p>
-    
+    showModal(`      
+      <p style="font-size:18px; animation: pop 0.4s ease;">
+        ✅ 預約成功
+      </p>
+      
       <p style="font-size:12px; color: var(--hint); margin-top:8px;">
         請私訊 kirariri studio 確認<br>
         IG：kirariri_studio
