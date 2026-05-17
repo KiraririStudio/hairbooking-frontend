@@ -1,4 +1,7 @@
-<!DOCTYPE html><!DOCTYPE htmlUTF-8">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
 <title>★琉光販賣所-日系編髮線上預約★</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,7 +21,7 @@
 }
 
 body {
-  background: var(--bg);
+  background: linear-gradient(180deg,#f6f1eb,#ede3d7);
   padding: 40px 16px;
   color: var(--text);
 }
@@ -27,52 +30,97 @@ body {
   max-width: 420px;
   margin: auto;
   background: var(--card);
-  padding: clamp(20px, 6vw, 28px);
-  border-radius: clamp(16px, 6vw, 20px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  padding: 28px;
+  border-radius: 22px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
 }
 
+/* 標題 */
 h2 {
   text-align: center;
   margin-bottom: 24px;
-  font-size: clamp(18px, 5vw, 22px);
-  line-height: 1.35;
+  font-size: 22px;
+  line-height: 1.4;
+}
+.subtitle {
+  display:block;
+  font-size:14px;
+  color:#9a8f84;
+  margin-top:4px;
+  letter-spacing:2px;
+}
+
+/* 表單 */
+.field {
+  margin-bottom: 14px;
 }
 
 label {
   display:block;
-  margin-top:18px;
-  font-size: clamp(13px, 3.5vw, 14px);
+  font-size:14px;
 }
 
 input, select {
   width:100%;
   margin-top:6px;
-  font-size: clamp(14px, 4vw, 16px);
-  padding: clamp(10px, 3vw, 12px);
-  border-radius: clamp(10px, 3vw, 12px);
+  font-size:15px;
+  padding:12px;
+  border-radius:12px;
   border:1px solid #ddd;
 }
 
 .hint {
   margin-top:6px;
-  font-size: clamp(12px, 3.2vw, 13px);
+  font-size:12px;
   color: var(--hint);
 }
 
+/* 按鈕 */
 button {
   width:100%;
-  margin-top: clamp(22px, 6vw, 28px);
-  padding: clamp(12px, 4vw, 14px);
-  background:var(--primary);
+  margin-top: 26px;
+  padding: 14px;
+  background: linear-gradient(135deg,#b48a63,#caa684);
   border:none;
-  border-radius: clamp(14px, 4vw, 16px);
-  font-size: clamp(15px, 4vw, 17px);
+  border-radius:16px;
+  font-size:16px;
+  font-weight:bold;
   color:white;
+  letter-spacing:1px;
   cursor:pointer;
+  box-shadow:0 8px 18px rgba(180,138,99,0.35);
+  transition: all 0.2s ease;
 }
-button:hover { background: var(--primary-dark); }
+button:hover {
+  transform: translateY(-2px);
+  box-shadow:0 12px 22px rgba(180,138,99,0.45);
+}
 
+/* 匯款區 */
+.bank-info {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg,#f7efe8,#fdf8f2);
+  border: 1px dashed #d8c9b8;
+}
+.bank-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #6b5a4a;
+}
+.bank-row {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.bank-note {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--hint);
+}
+
+/* modal */
 .modal {
   position:fixed;
   inset:0;
@@ -80,21 +128,17 @@ button:hover { background: var(--primary-dark); }
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:20;
 }
 .modal-box {
   background:white;
-  padding: clamp(20px, 5vw, 26px);
-  border-radius: clamp(14px, 5vw, 16px);
+  padding:24px;
+  border-radius:16px;
   max-width:340px;
   width:90%;
   text-align:center;
 }
-.modal-box p {
-  font-size: clamp(14px, 4vw, 16px);
-  margin:10px 0;
-}
 
+/* loading */
 .loading {
   position:fixed;
   inset:0;
@@ -102,7 +146,6 @@ button:hover { background: var(--primary-dark); }
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:30;
 }
 .spinner {
   width:46px;
@@ -112,72 +155,59 @@ button:hover { background: var(--primary-dark); }
   border-radius:50%;
   animation:spin 1s linear infinite;
 }
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-.bank-info {
-  margin-top: 24px;
-  padding: 14px 16px;
-  border-radius: 12px;
-  background: rgba(244,236,228,0.6);
-  border: 1px dashed #d8c9b8;
-}
-
-.bank-title {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #6b5a4a;
-}
-
-.bank-row {
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-.bank-note {
-  margin-top: 6px;
-  font-size: 12px;
-  color: var(--hint);
-}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-  <h2>琉光販賣所-日系編髮線上預約</h2>
 
-  <label>姓名</label>
-  <input id="name" placeholder="請輸入姓名">
-  <div class="hint">請填寫全名以利核對</div>
+  <h2>
+    ✧ 琉光販賣所 ✧
+    <span class="subtitle">日系編髮預約</span>
+  </h2>
 
-  <label>電話</label>
-  <input id="phone" placeholder="0912345678" maxlength="10">
-  <div class="hint">請輸入 10 碼手機號碼</div>
+  <div class="field">
+    <label>👤 姓名</label>
+    <input id="name" placeholder="請輸入姓名">
+    <div class="hint">請填寫全名以利核對</div>
+  </div>
 
-  <label>匯款後5碼（訂金$800當天可直接折抵店內商品)</label>
-  <input id="paycode" placeholder="12345" maxlength="5">
-  <div class="hint">請填寫轉帳完成後的帳號末 5 碼</div>
+  <div class="field">
+    <label>📞 電話</label>
+    <input id="phone" placeholder="0912345678" maxlength="10">
+    <div class="hint">請輸入 10 碼手機號碼</div>
+  </div>
 
-  <label>日期</label>
-  <select id="dateSelect">
-    <option value="">請選擇可預約日期</option>
-  </select>
-  <div class="hint">若日期未出現代表該日已額滿</div>
+  <div class="field">
+    <label>💰 匯款後5碼</label>
+    <input id="paycode" placeholder="12345" maxlength="5">
+    <div class="hint">請填寫轉帳完成後的帳號末 5 碼</div>
+  </div>
 
-  <label>時間</label>
-  <select id="timeSelect">
-    <option value="">請先選擇日期</option>
-  </select>
-  <div class="hint">請先選擇日期後再選時間</div>
+  <div class="field">
+    <label>📅 日期</label>
+    <select id="dateSelect">
+      <option value="">請選擇可預約日期</option>
+    </select>
+    <div class="hint">若日期未出現代表該日已額滿</div>
+  </div>
+
+  <div class="field">
+    <label>⏰ 時間</label>
+    <select id="timeSelect">
+      <option value="">請先選擇日期</option>
+    </select>
+    <div class="hint">請先選擇日期後再選時間</div>
+  </div>
 
   <div class="bank-info">
     <div class="bank-title">匯款資訊</div>
     <div class="bank-row">銀行：永豐銀行（807）</div>
     <div class="bank-row">帳號：14101800063837</div>
-    <div class="bank-note">※ 完成匯款後，請填寫上方匯款後5碼</div>
+    <div class="bank-note">※ 完成匯款後請填寫5碼</div>
     <div class="bank-note">匯款完成請私訊 kirariri studio 確認</div>
     <div class="bank-note">IG：kirariri_studio</div>
   </div>
@@ -286,12 +316,11 @@ function prepareConfirm(){
     return showModal("<p>匯款後5碼需為5位數</p><button onclick='closeModal()'>確定</button>");
 
   showModal(`
-    <p style="font-weight:bold">請確認預約資訊</p>
-    <p>姓名：${name}</p>
-    <p>電話：${phone}</p>
-    <p>匯款後5碼：${pay}</p>
-    <p>日期：${dateSelect.options[dateSelect.selectedIndex].text}</p>
-    <p>時間：${timeSelect.value}</p>
+    <p><b>請確認預約資訊</b></p>
+    <p>${name}</p>
+    <p>${phone}</p>
+    <p>${pay}</p>
+    <p>${timeSelect.value}</p>
     <button onclick="submit()">確認送出</button>
     <button onclick="closeModal()">取消</button>
   `);
@@ -320,5 +349,3 @@ function submit(){
 
 </body>
 </html>
-<html lang="zh-TW">
-<head>
