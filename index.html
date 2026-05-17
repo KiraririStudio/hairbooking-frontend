@@ -15,6 +15,13 @@
   --hint: #9a8f84;
 }
 
+.c-label {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+}
+
+
 * {
   box-sizing: border-box;
   font-family: "Noto Sans TC","Microsoft JhengHei",sans-serif;
@@ -317,11 +324,14 @@ function prepareConfirm(){
 
   showModal(`
     <p style="font-weight:bold">請確認預約資訊</p>
-    <p>姓名：${name}</p>
-    <p>電話：${phone}</p>
-    <p>匯款後5碼：${pay}</p>
-    <p>日期：${dateSelect.options[dateSelect.selectedIndex].text}</p>
-    <p>時間：${timeSelect.value}</p>
+    <div style="text-align:left; display:inline-block;">
+      <p><span class="c-label">姓名</span>：${name}</p>
+      <p><span class="c-label">電話</span>：${phone}</p>
+      <p><span class="c-label">匯款後5碼</span>：${pay}</p>
+      <p><span class="c-label">日期</span>：${dateSelect.options[dateSelect.selectedIndex].text}</p>
+      <p><span class="c-label">時間</span>：${timeSelect.value}</p>
+    </div>
+
     <button onclick="submit()">確認送出</button>
     <button onclick="closeModal()">取消</button>
   `);
