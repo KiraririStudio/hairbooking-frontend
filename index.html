@@ -207,7 +207,7 @@ button:hover {
     <div class="bank-title">匯款資訊</div>
     <div class="bank-row">銀行：永豐銀行（807）</div>
     <div class="bank-row">帳號：14101800063837</div>
-    <div class="bank-note">※ 完成匯款後請填寫5碼</div>
+    <div class="bank-note">※ 完成匯款後，請填寫上方匯款後5碼</div>
     <div class="bank-note">匯款完成請私訊 kirariri studio 確認</div>
     <div class="bank-note">IG：kirariri_studio</div>
   </div>
@@ -316,11 +316,12 @@ function prepareConfirm(){
     return showModal("<p>匯款後5碼需為5位數</p><button onclick='closeModal()'>確定</button>");
 
   showModal(`
-    <p><b>請確認預約資訊</b></p>
-    <p>${name}</p>
-    <p>${phone}</p>
-    <p>${pay}</p>
-    <p>${timeSelect.value}</p>
+    <p style="font-weight:bold">請確認預約資訊</p>
+    <p>姓名：${name}</p>
+    <p>電話：${phone}</p>
+    <p>匯款後5碼：${pay}</p>
+    <p>日期：${dateSelect.options[dateSelect.selectedIndex].text}</p>
+    <p>時間：${timeSelect.value}</p>
     <button onclick="submit()">確認送出</button>
     <button onclick="closeModal()">取消</button>
   `);
